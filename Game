@@ -1,0 +1,293 @@
+import random
+
+
+def game():
+    score1 = []
+    score2 = []
+    balls = 0
+    balls1 = 0
+    Sum1 = 0
+    Sum2 = 0
+    randnum = random.randint(1, 2)
+    # print(randnum)
+    toss = input("Coin Tossed!. Choose heads or tails\n")
+
+    if randnum == 1:
+        result = "heads"
+    elif randnum == 2:
+        result = "tails"
+
+    if toss == result:
+        print("You won!")
+        bob = input("Choose bat or bowl?\n")
+        if bob == "bat":
+            print("You are now batting...")
+
+            while True:
+
+                while True:
+                    try:
+                        randNum = random.randint(1, 5)
+                        # print(randNum)  # delete later
+                        user = int(input('Enter your number: '))
+                        print(f"Opponent chose: {randNum}\n")
+                        balls += 1
+                        if user < 1 or user > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user != randNum:
+                    score1.append(user)
+                    Sum1 = sum(score1)
+
+                elif user == randNum:
+                    print(f"You are out!")
+                    print(f"You scored {Sum1} runs in {balls} balls")
+                    break
+            print(f"Your opponent has to score {Sum1 + 1} to win\n")
+            print("Now it's your time to bowl")
+
+            while True:
+
+                while True:
+                    try:
+                        randNum1 = random.randint(1, 5)
+                        # print(randNum1)  # delete later
+                        user1 = int(input('Enter your number: '))
+                        print(f"Opponent chose: {randNum1}\n")
+                        balls1 += 1
+                        if user1 < 1 or user1 > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user1 != randNum1:
+                    score2.append(randNum1)
+                    Sum2 = sum(score2)
+                    if Sum2 > Sum1+1:
+                        print(f"Your Opponent score {Sum2}")
+                        print("You lost the match")
+                        exit()
+
+                elif user1 == randNum1:
+                    print(f"You took the wicket!")
+                    print(f"Opponent scored {Sum2} runs in {balls1} balls\n")
+                    break
+
+            if Sum1 > Sum2:
+                print(f"You won the game")
+
+            elif Sum1 < Sum2:
+                print(f"You lost the game")
+
+            elif Sum1 == Sum2:
+                print("OH! It's a tie. Play again to decide the winner")
+
+        elif bob == "bowl":
+            print("You are now Bowling...")
+            while True:
+
+                while True:
+                    try:
+                        randNum1 = random.randint(1, 5)
+                        # print(randNum1)  # delete later
+                        user1 = int(input('Enter your number: '))
+                        print(f"Opponent chose: {randNum1}\n")
+                        balls1 += 1
+                        if user1 < 1 or user1 > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user1 != randNum1:
+                    score2.append(randNum1)
+                    Sum1 = sum(score2)
+
+                elif user1 == randNum1:
+                    print(f"You took the wicket!")
+                    print(f"Opponent scored {Sum1} runs in {balls1} balls\n")
+                    break
+
+            print(f"You have to score {Sum1 + 1} to win\n")
+            print("Now it's your time to bat\n")
+
+            while True:
+
+                while True:
+                    try:
+                        randNum = random.randint(1, 5)
+                        # print(randNum)  # delete later
+                        user = int(input('Enter your number: '))
+                        print(f"Opponent chose: {randNum}\n")
+                        balls += 1
+                        if user < 1 or user > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user != randNum:
+                    score1.append(user)
+                    Sum2 = sum(score1)
+                    if Sum2 > Sum1+1:
+                        print(f"You scored {Sum2}")
+                        print("You won the match!")
+                        exit()
+
+                elif user == randNum:
+                    print(f"You are out!")
+                    print(f"You scored {Sum2} runs in {balls} balls\n")
+                    # print("Opponenet won!")
+                    break
+
+            if Sum2 > Sum1+1:
+                print(f"You won the game ")
+
+            elif Sum1 < Sum2:
+                print(f"You lost the game")
+
+            elif Sum1 == Sum2:
+                print("OH! It's a tie. Play again to decide the winner")
+
+    elif toss != result:
+        oppo = random.choice(["Bat", "Bowl"])
+
+        print(f"You lost the toss! Opponent chose to {oppo}")
+
+        if oppo == "Bowl":
+            print("You are now batting...")
+
+            while True:
+
+                while True:
+                    try:
+                        randNum = random.randint(1, 5)
+                        # print(randNum)  # delete later
+                        user = int(input('Enter your number: '))
+                        print(f"Opponent chose: {randNum}\n")
+                        balls += 1
+                        if user < 1 or user > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user != randNum:
+                    score1.append(user)
+                    Sum1 = sum(score1)
+
+                elif user == randNum:
+                    print(f"You are out!")
+                    print(f"Your Opponents needs to score {Sum1 + 1} to win")
+                    break
+            print("Now it's your time to bowl")
+
+            while True:
+
+                while True:
+                    try:
+                        randNum1 = random.randint(1, 5)
+                        # print(randNum1)  # delete later
+                        user1 = int(input('Enter your number: '))
+                        print(f"Opponent chose: {randNum1}\n")
+                        balls1 += 1
+                        if user1 < 1 or user1 > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user1 != randNum1:
+                    score2.append(randNum1)
+                    Sum2 = sum(score2)
+                    if Sum2 > Sum1+1:
+                        print(f"Your Opponent scored {Sum2}")
+                        print("You lost the match")
+                        exit()
+
+                elif user1 == randNum1:
+                    print(f"You took the wicket!")
+                    print(f"Opponent scored {Sum2} runs in {balls1} balls\n")
+                    break
+
+            if Sum1 > Sum2:
+                print(f"You won the game")
+
+            elif Sum1 < Sum2:
+                print(f"You lost the game")
+
+            elif Sum1 == Sum2:
+                print("OH! It's a tie. Play again to decide the winner")
+
+        elif oppo == "Bat":
+            print("You are now Bowling...")
+            while True:
+
+                while True:
+                    try:
+                        randNum1 = random.randint(1, 5)
+                        # print(randNum1)  # delete later
+                        user1 = int(input('Enter your number: '))
+                        print(f"Opponent chose: {randNum1}\n")
+                        balls1 += 1
+                        if user1 < 1 or user1 > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user1 != randNum1:
+                    score2.append(randNum1)
+                    Sum1 = sum(score2)
+
+                elif user1 == randNum1:
+                    print(f"You took the wicket!")
+                    print(f"Opponent scored {Sum1} runs in {balls1} balls\n")
+                    break
+
+            print(f"You have to score {Sum1 + 1} to win\n")
+            print("\nNow it's your time to bat\n")
+
+            while True:
+
+                while True:
+                    try:
+                        randNum = random.randint(1, 5)
+                        # print(randNum)  # delete later
+                        user = int(input('Enter your number: '))
+                        print(f"Opponent chose {randNum}\n")
+                        balls += 1
+                        if user < 1 or user > 5:
+                            raise ValueError
+                        break
+                    except ValueError:
+                        print("The number must be in the range of 1-5.")
+
+                if user != randNum:
+                    score1.append(user)
+                    Sum2 = sum(score1)
+                    if Sum2 > Sum1+1:
+                        print(f"You scored {Sum2}")
+                        print("You won the match!")
+                        exit()
+
+                elif user == randNum:
+                    print(f"You are out!")
+                    print(f"You scored {Sum2} runs in {balls} balls\n")
+                    break
+
+            if Sum2 > Sum1:
+                print(f"You won the game ")
+
+            elif Sum1 < Sum2:
+                print(f"You lost the game")
+
+            elif Sum1 == Sum2:
+                print("OH! It's a tie. Play again to decide the winner")
+
+
+a = game()
